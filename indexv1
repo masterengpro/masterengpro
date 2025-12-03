@@ -1,0 +1,2253 @@
+<!doctype html>
+<html lang="vi">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MASTERENGPRO - Giải Pháp Kỹ Thuật Toàn Diện</title>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      width: 100%;
+      height: 100%;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 100%;
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 40px;
+    }
+
+    .logo-text h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .logo-text p {
+      font-size: 14px;
+      opacity: 0.95;
+    }
+
+    .header-contact {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+    }
+
+    /* Navigation */
+    .nav-bar {
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+    }
+
+    .nav-button {
+      background: none;
+      border: none;
+      padding: 18px 30px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-button:hover {
+      color: #2a5298;
+      background: #f8f9fa;
+    }
+
+    .nav-button.active {
+      color: #2a5298;
+      border-bottom: 3px solid #2a5298;
+      background: #f8f9fa;
+    }
+
+    /* Banner */
+    .banner {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .banner h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .banner p {
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      width: 100%;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .content-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+    }
+
+    .content-card h2 {
+      color: #1e3c72;
+      font-size: 26px;
+      margin-bottom: 25px;
+      border-left: 4px solid #2a5298;
+      padding-left: 15px;
+    }
+
+    /* Form Styles */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 0;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e1e8ed;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s ease;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #2a5298;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(42, 82, 152, 0.4);
+    }
+
+    .btn-secondary {
+      background: #f5f7fa;
+      color: #333;
+      border: 2px solid #e1e8ed;
+    }
+
+    .btn-secondary:hover {
+      background: #e1e8ed;
+    }
+
+    .btn-danger {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #c0392b;
+    }
+
+    .btn-success {
+      background: #27ae60;
+      color: white;
+    }
+
+    .btn-success:hover {
+      background: #229954;
+    }
+
+    /* Tender Management */
+    .tender-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .tender-filters {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filter-select {
+      padding: 10px 15px;
+      border: 2px solid #e1e8ed;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .search-box {
+      padding: 10px 15px;
+      border: 2px solid #e1e8ed;
+      border-radius: 8px;
+      font-size: 14px;
+      width: 250px;
+    }
+
+    .tender-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .tender-item {
+      background: white;
+      border: 2px solid #e1e8ed;
+      border-radius: 12px;
+      padding: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .tender-item:hover {
+      border-color: #2a5298;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .tender-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      gap: 15px;
+    }
+
+    .tender-title {
+      flex: 1;
+    }
+
+    .tender-title h3 {
+      color: #1e3c72;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .tender-title .tender-code {
+      color: #7f8c8d;
+      font-size: 13px;
+    }
+
+    .tender-status {
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .status-dang-mo {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .status-sap-dong {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .status-da-dong {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    .status-trung-thau {
+      background: #d1ecf1;
+      color: #0c5460;
+    }
+
+    .tender-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .info-item {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .info-item strong {
+      color: #333;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .tender-actions {
+      display: flex;
+      gap: 10px;
+      border-top: 1px solid #e1e8ed;
+      padding-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #7f8c8d;
+    }
+
+    .empty-state-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    .empty-state h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90%;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .modal-header h2 {
+      color: #1e3c72;
+      font-size: 24px;
+    }
+
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #7f8c8d;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close-modal:hover {
+      color: #333;
+    }
+
+    /* Loading */
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .loading.show {
+      display: block;
+    }
+
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #2a5298;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 15px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      animation: slideDown 0.3s ease;
+    }
+
+    .toast.show {
+      display: flex;
+    }
+
+    .toast.success {
+      background: #d4edda;
+      color: #155724;
+      border-left: 4px solid #28a745;
+    }
+
+    .toast.error {
+      background: #f8d7da;
+      color: #721c24;
+      border-left: 4px solid #dc3545;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    /* Tools Grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .tool-card {
+      background: white;
+      border: 2px solid #e1e8ed;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .tool-card:hover {
+      border-color: #2a5298;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .tool-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .tool-card h3 {
+      color: #1e3c72;
+      font-size: 24px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .tool-card p {
+      color: #7f8c8d;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    /* TCVN Items */
+    .tcvn-item {
+      background: white;
+      border: 2px solid #e1e8ed;
+      border-radius: 12px;
+      padding: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .tcvn-item:hover {
+      border-color: #2a5298;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .tcvn-category-badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .tcvn-item h3 {
+      color: #1e3c72;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .tcvn-item p {
+      color: #7f8c8d;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Footer */
+    .footer {
+      background: #2c3e50;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      width: 100%;
+      margin-top: 50px;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer p {
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+
+    .footer a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .banner h2 {
+        font-size: 24px;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .tender-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .tender-filters {
+        flex-direction: column;
+      }
+
+      .filter-select, .search-box {
+        width: 100%;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div id="toast" class="toast"></div><!-- Header -->
+  <header class="header">
+   <div class="header-content">
+    <div class="logo-section">
+     <div class="logo">
+      🏗️
+     </div>
+     <div class="logo-text">
+      <h1 id="company-name">MASTERENGPRO</h1>
+      <p id="company-slogan">Công nghệ - cho giải pháp toàn diện</p>
+     </div>
+    </div>
+    <div class="header-contact">
+     <div class="contact-item"><span>📞</span> <span id="header-hotline">09170363968</span>
+     </div>
+     <div class="contact-item"><span>✉️</span> <span id="header-email">mastercam_dn@yahoo.com</span>
+     </div>
+    </div>
+   </div>
+  </header><!-- Navigation -->
+  <nav class="nav-bar">
+   <div class="nav-content"><button class="nav-button active" onclick="showSection('dau-thau')"> 📋 Quản Lý Đấu Thầu </button> <button class="nav-button" onclick="showSection('cong-cu')"> 🛠️ Công Cụ Kỹ Thuật </button> <button class="nav-button" onclick="showSection('huong-dan')"> 📖 Hướng Dẫn Sử Dụng </button> <button class="nav-button" onclick="showSection('bai-viet')"> 📝 Bài Viết </button> <button class="nav-button" onclick="showSection('tcvn')"> 📚 Tra Cứu TCVN </button> <button class="nav-button" onclick="showSection('lien-he')"> 📞 Liên Hệ </button>
+   </div>
+  </nav><!-- Banner -->
+  <section class="banner">
+   <h2>Giải pháp kỹ thuật &amp; quản lý dự án toàn diện</h2>
+   <p>Từ đấu thầu đến thi công - một nền tảng duy nhất</p>
+  </section><!-- Main Content -->
+  <main class="main-content"><!-- Quản Lý Đấu Thầu -->
+   <section id="dau-thau" class="section active">
+    <div class="content-card">
+     <h2>📋 Quản Lý Đấu Thầu</h2>
+     <p style="color: #7f8c8d; margin-bottom: 25px;">Quản lý toàn bộ hồ sơ đấu thầu từ A đến Z</p>
+     <div class="tender-controls"><button class="btn btn-primary" onclick="openAddTenderModal()"> + Thêm Hồ Sơ Mới </button>
+      <div class="tender-filters"><select class="filter-select" id="status-filter" onchange="filterTenders()"> <option value="">Tất cả trạng thái</option> <option value="dang-mo">Đang mở</option> <option value="sap-dong">Sắp đóng</option> <option value="da-dong">Đã đóng</option> <option value="trung-thau">Trúng thầu</option> </select> <input type="text" class="search-box" id="search-box" placeholder="Tìm kiếm..." onkeyup="filterTenders()">
+      </div>
+     </div>
+     <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Đang tải dữ liệu...</p>
+     </div>
+     <div id="tender-list" class="tender-list"><!-- Tender items will be rendered here -->
+     </div>
+    </div>
+   </section><!-- Công Cụ Kỹ Thuật -->
+   <section id="cong-cu" class="section">
+    <div class="content-card">
+     <h2>🛠️ Công Cụ Kỹ Thuật</h2>
+     <p style="color: #7f8c8d; margin-bottom: 25px;">Các công cụ tính toán và hỗ trợ kỹ thuật chuyên nghiệp</p>
+     <div id="tool-selector" class="tools-grid">
+      <div class="tool-card" onclick="showTool('vua-xay')">
+       <div class="tool-icon">
+        🧱
+       </div>
+       <h3>Tính Vữa Xây</h3>
+       <p>Tính toán xi măng, cát cho vữa xây gạch theo TCVN</p>
+      </div>
+      <div class="tool-card" onclick="showTool('vua-to')">
+       <div class="tool-icon">
+        🎨
+       </div>
+       <h3>Tính Vữa Tô</h3>
+       <p>Tính toán vật liệu vữa tô/trát tường chính xác</p>
+      </div>
+      <div class="tool-card" onclick="showTool('be-tong')">
+       <div class="tool-icon">
+        🏗️
+       </div>
+       <h3>Tính Bê Tông</h3>
+       <p>Tính toán xi măng, cát, đá cho bê tông các mác</p>
+      </div>
+      <div class="tool-card" onclick="showTool('chi-phi')">
+       <div class="tool-icon">
+        💰
+       </div>
+       <h3>Dự Toán Chi Phí</h3>
+       <p>Ước tính chi phí đầu tư xây dựng công trình</p>
+      </div>
+      <div class="tool-card" onclick="showTool('ket-cau')">
+       <div class="tool-icon">
+        📐
+       </div>
+       <h3>Tính Kết Cấu</h3>
+       <p>Tính toán sơ bộ cột, dầm, sàn BTCT</p>
+      </div>
+      <div class="tool-card" onclick="showTool('khoi-luong')">
+       <div class="tool-icon">
+        📦
+       </div>
+       <h3>Tính Khối Lượng</h3>
+       <p>Tính khối lượng đào đắp, san lấp</p>
+      </div>
+     </div><!-- Tool Details -->
+     <div id="tool-details" style="display: none;">
+      <div style="margin-bottom: 20px;"><button class="btn btn-secondary" onclick="backToToolList()"> ← Quay lại danh sách công cụ </button>
+      </div><!-- Vữa Xây Calculator -->
+      <div id="tool-vua-xay" class="tool-detail" style="display: none;">
+       <h3 style="color: #1e3c72; font-size: 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;"><span style="font-size: 36px;">🧱</span> Tính Vữa Xây Gạch</h3>
+       <form onsubmit="calculateVuaXay(event)">
+        <div class="form-grid">
+         <div class="form-group"><label for="vx-chieu-day">Chiều dày tường *</label> <select id="vx-chieu-day" required> <option value="110">110mm (½ gạch)</option> <option value="220">220mm (1 gạch)</option> </select>
+         </div>
+         <div class="form-group"><label for="vx-mac">Mác vữa *</label> <select id="vx-mac" required> <option value="50">M50</option> <option value="75" selected>M75</option> <option value="100">M100</option> </select>
+         </div>
+         <div class="form-group"><label for="vx-dien-tich">Diện tích tường (m²) *</label> <input type="number" id="vx-dien-tich" required min="0.1" step="0.1" placeholder="VD: 100">
+         </div>
+        </div>
+        <div class="button-group"><button type="submit" class="btn btn-primary">🧮 Tính Toán</button> <button type="reset" class="btn btn-secondary">🔄 Làm mới</button>
+        </div>
+       </form>
+       <div id="vx-result" style="display: none; margin-top: 30px; padding: 25px; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #2a5298;">
+        <h4 style="color: #1e3c72; margin-bottom: 20px; font-size: 20px;">📊 Kết Quả Tính Toán</h4>
+        <div style="display: grid; gap: 15px;">
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Xi măng
+          </div>
+          <div style="font-size: 24px; font-weight: 700; color: #2a5298;" id="vx-xi-mang">
+           -
+          </div>
+         </div>
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Cát xây
+          </div>
+          <div style="font-size: 24px; font-weight: 700; color: #e67e22;" id="vx-cat">
+           -
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Vữa Tô Calculator -->
+      <div id="tool-vua-to" class="tool-detail" style="display: none;">
+       <h3 style="color: #1e3c72; font-size: 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;"><span style="font-size: 36px;">🎨</span> Tính Vữa Tô/Trát Tường</h3>
+       <form onsubmit="calculateVuaTo(event)">
+        <div class="form-grid">
+         <div class="form-group"><label for="vt-mac">Mác vữa *</label> <select id="vt-mac" required> <option value="50">M50</option> <option value="75" selected>M75</option> <option value="100">M100</option> </select>
+         </div>
+         <div class="form-group"><label for="vt-chieu-day">Chiều dày lớp tô *</label> <select id="vt-chieu-day" required> <option value="10" selected>10mm</option> <option value="15">15mm</option> </select>
+         </div>
+         <div class="form-group"><label for="vt-dien-tich">Diện tích tô (m²) *</label> <input type="number" id="vt-dien-tich" required min="0.1" step="0.1" placeholder="VD: 200">
+         </div>
+        </div>
+        <div class="button-group"><button type="submit" class="btn btn-primary">🧮 Tính Toán</button> <button type="reset" class="btn btn-secondary">🔄 Làm mới</button>
+        </div>
+       </form>
+       <div id="vt-result" style="display: none; margin-top: 30px; padding: 25px; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #2a5298;">
+        <h4 style="color: #1e3c72; margin-bottom: 20px; font-size: 20px;">📊 Kết Quả Tính Toán</h4>
+        <div style="display: grid; gap: 15px;">
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Xi măng
+          </div>
+          <div style="font-size: 24px; font-weight: 700; color: #2a5298;" id="vt-xi-mang">
+           -
+          </div>
+         </div>
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Cát tô
+          </div>
+          <div style="font-size: 24px; font-weight: 700; color: #e67e22;" id="vt-cat">
+           -
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Bê Tông Calculator -->
+      <div id="tool-be-tong" class="tool-detail" style="display: none;">
+       <h3 style="color: #1e3c72; font-size: 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;"><span style="font-size: 36px;">🏗️</span> Tính Bê Tông</h3>
+       <form onsubmit="calculateBeTong(event)">
+        <div class="form-grid">
+         <div class="form-group"><label for="bt-mac">Mác bê tông *</label> <select id="bt-mac" required> <option value="150">M150 (B10)</option> <option value="200">M200 (B15)</option> <option value="250" selected>M250 (B20)</option> <option value="300">M300 (B22.5)</option> </select>
+         </div>
+         <div class="form-group"><label for="bt-the-tich">Thể tích bê tông (m³) *</label> <input type="number" id="bt-the-tich" required min="0.1" step="0.1" placeholder="VD: 10">
+         </div>
+        </div>
+        <div class="button-group"><button type="submit" class="btn btn-primary">🧮 Tính Toán</button> <button type="reset" class="btn btn-secondary">🔄 Làm mới</button>
+        </div>
+       </form>
+       <div id="bt-result" style="display: none; margin-top: 30px; padding: 25px; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #2a5298;">
+        <h4 style="color: #1e3c72; margin-bottom: 20px; font-size: 20px;">📊 Kết Quả Tính Toán</h4>
+        <div style="display: grid; gap: 15px;">
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Xi măng
+          </div>
+          <div style="font-size: 24px; font-weight: 700; color: #2a5298;" id="bt-xi-mang">
+           -
+          </div>
+         </div>
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Cát
+          </div>
+          <div style="font-size: 24px; font-weight: 700; color: #e67e22;" id="bt-cat">
+           -
+          </div>
+         </div>
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Đá
+          </div>
+          <div style="font-size: 24px; font-weight: 700; color: #95a5a6;" id="bt-da">
+           -
+          </div>
+         </div>
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Nước
+          </div>
+          <div style="font-size: 24px; font-weight: 700; color: #3498db;" id="bt-nuoc">
+           -
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Chi Phí Calculator -->
+      <div id="tool-chi-phi" class="tool-detail" style="display: none;">
+       <h3 style="color: #1e3c72; font-size: 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;"><span style="font-size: 36px;">💰</span> Dự Toán Chi Phí Xây Dựng</h3>
+       <form onsubmit="calculateChiPhi(event)">
+        <div class="form-grid">
+         <div class="form-group"><label for="cp-dien-tich">Diện tích xây dựng (m²) *</label> <input type="number" id="cp-dien-tich" required min="1" step="0.1" placeholder="VD: 100">
+         </div>
+         <div class="form-group"><label for="cp-don-gia">Đơn giá xây dựng (VNĐ/m²) *</label> <input type="number" id="cp-don-gia" required min="1000000" step="100000" value="5000000" placeholder="VD: 5000000">
+         </div>
+        </div>
+        <div class="form-grid">
+         <div class="form-group"><label for="cp-thiet-ke">Chi phí thiết kế (%) *</label> <input type="number" id="cp-thiet-ke" required min="0" max="100" step="0.1" value="5" placeholder="VD: 5">
+         </div>
+         <div class="form-group"><label for="cp-giam-sat">Chi phí giám sát (%) *</label> <input type="number" id="cp-giam-sat" required min="0" max="100" step="0.1" value="3" placeholder="VD: 3">
+         </div>
+         <div class="form-group"><label for="cp-du-phong">Chi phí dự phòng (%) *</label> <input type="number" id="cp-du-phong" required min="0" max="100" step="0.1" value="10" placeholder="VD: 10">
+         </div>
+        </div>
+        <div class="button-group"><button type="submit" class="btn btn-primary">🧮 Tính Toán</button> <button type="reset" class="btn btn-secondary">🔄 Làm mới</button>
+        </div>
+       </form>
+       <div id="cp-result" style="display: none; margin-top: 30px; padding: 25px; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #2a5298;">
+        <h4 style="color: #1e3c72; margin-bottom: 20px; font-size: 20px;">📊 Chi Tiết Chi Phí</h4>
+        <div style="display: grid; gap: 15px;">
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Chi phí xây dựng
+          </div>
+          <div style="font-size: 20px; font-weight: 700; color: #2a5298;" id="cp-xay-dung">
+           -
+          </div>
+         </div>
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Chi phí thiết kế
+          </div>
+          <div style="font-size: 20px; font-weight: 700; color: #e67e22;" id="cp-thiet-ke-result">
+           -
+          </div>
+         </div>
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Chi phí giám sát
+          </div>
+          <div style="font-size: 20px; font-weight: 700; color: #9b59b6;" id="cp-giam-sat-result">
+           -
+          </div>
+         </div>
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Chi phí dự phòng
+          </div>
+          <div style="font-size: 20px; font-weight: 700; color: #95a5a6;" id="cp-du-phong-result">
+           -
+          </div>
+         </div>
+         <div style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); padding: 20px; border-radius: 8px;">
+          <div style="font-size: 16px; color: white; margin-bottom: 8px; opacity: 0.9;">
+           TỔNG CHI PHÍ ƯỚC TÍNH
+          </div>
+          <div style="font-size: 28px; font-weight: 700; color: white;" id="cp-tong">
+           -
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Kết Cấu Calculator -->
+      <div id="tool-ket-cau" class="tool-detail" style="display: none;">
+       <h3 style="color: #1e3c72; font-size: 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;"><span style="font-size: 36px;">📐</span> Tính Kết Cấu BTCT</h3>
+       <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #ffc107;"><strong>⚠️ Lưu ý:</strong> Kết quả chỉ mang tính tham khảo sơ bộ. Cần kiểm tra và tính toán chi tiết theo TCVN bởi kỹ sư kết cấu.
+       </div>
+       <div class="form-group" style="margin-bottom: 25px;"><label for="kc-loai">Chọn loại kết cấu *</label> <select id="kc-loai" onchange="changeKetCauType()" style="padding: 12px; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 15px; width: 100%;"> <option value="cot">Cột BTCT</option> <option value="dam">Dầm BTCT</option> <option value="san">Sàn BTCT</option> </select>
+       </div><!-- Form Cột -->
+       <form id="form-cot" onsubmit="calculateCot(event)">
+        <div class="form-grid">
+         <div class="form-group"><label for="cot-chieu-cao">Chiều cao cột (m) *</label> <input type="number" id="cot-chieu-cao" required min="2" max="10" step="0.1" value="3" placeholder="VD: 3">
+         </div>
+         <div class="form-group"><label for="cot-tai-trong">Tải trọng (tấn) *</label> <input type="number" id="cot-tai-trong" required min="1" max="100" step="0.5" value="20" placeholder="VD: 20">
+         </div>
+        </div>
+        <div class="button-group"><button type="submit" class="btn btn-primary">🧮 Tính Toán</button> <button type="reset" class="btn btn-secondary">🔄 Làm mới</button>
+        </div>
+       </form><!-- Form Dầm -->
+       <form id="form-dam" onsubmit="calculateDam(event)" style="display: none;">
+        <div class="form-grid">
+         <div class="form-group"><label for="dam-nhip">Nhịp dầm (m) *</label> <input type="number" id="dam-nhip" required min="2" max="12" step="0.1" value="5" placeholder="VD: 5">
+         </div>
+         <div class="form-group"><label for="dam-tai-trong">Tải trọng phân bố (tấn/m) *</label> <input type="number" id="dam-tai-trong" required min="0.5" max="10" step="0.1" value="1.5" placeholder="VD: 1.5">
+         </div>
+        </div>
+        <div class="button-group"><button type="submit" class="btn btn-primary">🧮 Tính Toán</button> <button type="reset" class="btn btn-secondary">🔄 Làm mới</button>
+        </div>
+       </form><!-- Form Sàn -->
+       <form id="form-san" onsubmit="calculateSan(event)" style="display: none;">
+        <div class="form-grid">
+         <div class="form-group"><label for="san-loai">Loại sàn *</label> <select id="san-loai" required> <option value="1-phia">Sàn 1 phía</option> <option value="2-phia" selected>Sàn 2 phía</option> </select>
+         </div>
+         <div class="form-group"><label for="san-nhip">Nhịp sàn (m) *</label> <input type="number" id="san-nhip" required min="2" max="8" step="0.1" value="4" placeholder="VD: 4">
+         </div>
+         <div class="form-group"><label for="san-tai-trong">Tải trọng (kg/m²) *</label> <input type="number" id="san-tai-trong" required min="200" max="800" step="10" value="400" placeholder="VD: 400">
+         </div>
+        </div>
+        <div class="button-group"><button type="submit" class="btn btn-primary">🧮 Tính Toán</button> <button type="reset" class="btn btn-secondary">🔄 Làm mới</button>
+        </div>
+       </form>
+       <div id="kc-result" style="display: none; margin-top: 30px; padding: 25px; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #2a5298;">
+        <h4 style="color: #1e3c72; margin-bottom: 20px; font-size: 20px;">📊 Kết Quả Tính Toán</h4>
+        <div id="kc-result-content"></div>
+       </div>
+      </div><!-- Khối Lượng Calculator -->
+      <div id="tool-khoi-luong" class="tool-detail" style="display: none;">
+       <h3 style="color: #1e3c72; font-size: 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;"><span style="font-size: 36px;">📦</span> Tính Khối Lượng Đào Đắp</h3>
+       <form onsubmit="calculateKhoiLuong(event)">
+        <div class="form-grid">
+         <div class="form-group"><label for="kl-loai">Loại công việc *</label> <select id="kl-loai" required> <option value="dao">Đào đất</option> <option value="dap">Đắp đất</option> <option value="san-lap">San lấp mặt bằng</option> </select>
+         </div>
+         <div class="form-group"><label for="kl-chieu-dai">Chiều dài (m) *</label> <input type="number" id="kl-chieu-dai" required min="0.1" step="0.1" placeholder="VD: 20">
+         </div>
+         <div class="form-group"><label for="kl-chieu-rong">Chiều rộng (m) *</label> <input type="number" id="kl-chieu-rong" required min="0.1" step="0.1" placeholder="VD: 10">
+         </div>
+         <div class="form-group"><label for="kl-chieu-sau">Chiều sâu/cao (m) *</label> <input type="number" id="kl-chieu-sau" required min="0.1" step="0.1" placeholder="VD: 1.5">
+         </div>
+        </div>
+        <div class="button-group"><button type="submit" class="btn btn-primary">🧮 Tính Toán</button> <button type="reset" class="btn btn-secondary">🔄 Làm mới</button>
+        </div>
+       </form>
+       <div id="kl-result" style="display: none; margin-top: 30px; padding: 25px; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #2a5298;">
+        <h4 style="color: #1e3c72; margin-bottom: 20px; font-size: 20px;">📊 Kết Quả Tính Toán</h4>
+        <div style="display: grid; gap: 15px;">
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Khối lượng đất tự nhiên
+          </div>
+          <div style="font-size: 24px; font-weight: 700; color: #2a5298;" id="kl-the-tich">
+           -
+          </div>
+         </div>
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Khối lượng đất sau đào/đắp
+          </div>
+          <div style="font-size: 24px; font-weight: 700; color: #e67e22;" id="kl-the-tich-thuc">
+           -
+          </div>
+         </div>
+         <div style="background: white; padding: 15px; border-radius: 8px;">
+          <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">
+           Số chuyến xe tải (8 tấn)
+          </div>
+          <div style="font-size: 24px; font-weight: 700; color: #27ae60;" id="kl-chuyen-xe">
+           -
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Hướng Dẫn Sử Dụng -->
+   <section id="huong-dan" class="section">
+    <div class="content-card">
+     <h2>📖 Hướng Dẫn Sử Dụng Công Cụ Kỹ Thuật</h2>
+     <p style="color: #7f8c8d; margin-bottom: 25px;">Hướng dẫn chi tiết cách sử dụng các công cụ tính toán</p>
+     <div style="display: grid; gap: 25px;">
+      <div style="background: white; border: 2px solid #e1e8ed; border-radius: 12px; padding: 25px;">
+       <h3 style="color: #1e3c72; font-size: 22px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><span style="font-size: 32px;">🧱</span> Tính Vữa Xây</h3>
+       <p style="color: #555; line-height: 1.8; margin-bottom: 15px;">Công cụ này giúp bạn tính toán chính xác lượng xi măng và cát cần thiết cho công tác xây gạch theo tiêu chuẩn TCVN.</p>
+       <ul style="color: #555; line-height: 1.8; margin-left: 20px;">
+        <li><strong>Bước 1:</strong> Chọn chiều dày tường (110mm hoặc 220mm)</li>
+        <li><strong>Bước 2:</strong> Chọn mác vữa phù hợp (M50, M75, M100)</li>
+        <li><strong>Bước 3:</strong> Nhập diện tích tường cần xây (m²)</li>
+        <li><strong>Bước 4:</strong> Nhấn "Tính Toán" để xem kết quả</li>
+       </ul>
+       <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #ffc107;"><strong>💡 Lưu ý:</strong> Khuyến nghị sử dụng mác M75 cho nhà dân, đảm bảo độ bền và tiết kiệm chi phí.
+       </div>
+      </div>
+      <div style="background: white; border: 2px solid #e1e8ed; border-radius: 12px; padding: 25px;">
+       <h3 style="color: #1e3c72; font-size: 22px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><span style="font-size: 32px;">🎨</span> Tính Vữa Tô</h3>
+       <p style="color: #555; line-height: 1.8; margin-bottom: 15px;">Tính toán vật liệu cho công tác tô/trát tường, đảm bảo bề mặt phẳng, mịn và đẹp.</p>
+       <ul style="color: #555; line-height: 1.8; margin-left: 20px;">
+        <li><strong>Bước 1:</strong> Chọn mác vữa tô (M50, M75, M100)</li>
+        <li><strong>Bước 2:</strong> Chọn chiều dày lớp tô (10mm hoặc 15mm)</li>
+        <li><strong>Bước 3:</strong> Nhập diện tích cần tô (m²)</li>
+        <li><strong>Bước 4:</strong> Nhấn "Tính Toán" để xem kết quả</li>
+       </ul>
+       <div style="background: #d1ecf1; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #17a2b8;"><strong>⚠️ Lưu ý:</strong> Vữa tô tốn xi măng nhiều hơn vữa xây! Khuyến nghị dùng M75, chiều dày 10mm.
+       </div>
+      </div>
+      <div style="background: white; border: 2px solid #e1e8ed; border-radius: 12px; padding: 25px;">
+       <h3 style="color: #1e3c72; font-size: 22px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><span style="font-size: 32px;">🏗️</span> Tính Bê Tông</h3>
+       <p style="color: #555; line-height: 1.8; margin-bottom: 15px;">Tính toán xi măng, cát, đá và nước cho bê tông các mác theo định mức TCVN.</p>
+       <ul style="color: #555; line-height: 1.8; margin-left: 20px;">
+        <li><strong>Bước 1:</strong> Chọn mác bê tông (M150, M200, M250, M300)</li>
+        <li><strong>Bước 2:</strong> Nhập thể tích bê tông cần đổ (m³)</li>
+        <li><strong>Bước 3:</strong> Nhấn "Tính Toán" để xem kết quả</li>
+       </ul>
+       <div style="background: #d4edda; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #28a745;"><strong>✓ Khuyến nghị:</strong> Sử dụng M250 cho nhà dân và công trình thông thường, M300 cho cao tầng.
+       </div>
+      </div>
+      <div style="background: white; border: 2px solid #e1e8ed; border-radius: 12px; padding: 25px;">
+       <h3 style="color: #1e3c72; font-size: 22px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><span style="font-size: 32px;">💰</span> Dự Toán Chi Phí</h3>
+       <p style="color: #555; line-height: 1.8; margin-bottom: 15px;">Ước tính tổng chi phí đầu tư xây dựng bao gồm chi phí xây dựng, thiết kế, giám sát và dự phòng.</p>
+       <ul style="color: #555; line-height: 1.8; margin-left: 20px;">
+        <li><strong>Bước 1:</strong> Nhập diện tích xây dựng (m²)</li>
+        <li><strong>Bước 2:</strong> Nhập đơn giá xây dựng (VNĐ/m²)</li>
+        <li><strong>Bước 3:</strong> Điều chỉnh các tỷ lệ % nếu cần</li>
+        <li><strong>Bước 4:</strong> Nhấn "Tính Toán" để xem chi phí tổng</li>
+       </ul>
+      </div>
+      <div style="background: white; border: 2px solid #e1e8ed; border-radius: 12px; padding: 25px;">
+       <h3 style="color: #1e3c72; font-size: 22px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><span style="font-size: 32px;">📐</span> Tính Kết Cấu</h3>
+       <p style="color: #555; line-height: 1.8; margin-bottom: 15px;">Tính toán sơ bộ kết cấu bê tông cốt thép: cột, dầm, sàn theo nguyên lý kết cấu cơ bản.</p>
+       <ul style="color: #555; line-height: 1.8; margin-left: 20px;">
+        <li><strong>Tính Cột:</strong> Nhập chiều cao và tải trọng → Kích thước cột và cốt thép</li>
+        <li><strong>Tính Dầm:</strong> Nhập nhịp và tải trọng → Kích thước dầm và cốt thép</li>
+        <li><strong>Tính Sàn:</strong> Nhập loại sàn, nhịp và tải trọng → Chiều dày sàn</li>
+       </ul>
+       <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #ffc107;"><strong>⚠️ Quan trọng:</strong> Kết quả chỉ mang tính tham khảo sơ bộ. Cần kiểm tra và điều chỉnh theo TCVN bởi kỹ sư chuyên ngành.
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Bài Viết -->
+   <section id="bai-viet" class="section">
+    <div class="content-card">
+     <h2>📝 Bài Viết &amp; Kiến Thức</h2>
+     <p style="color: #7f8c8d; margin-bottom: 25px;">Chia sẻ kiến thức và kinh nghiệm xây dựng</p>
+     <div style="margin-bottom: 30px;"><button class="btn btn-primary" onclick="openPostModal()"> ➕ Đăng Bài Mới </button>
+     </div>
+     <div id="post-loading" class="loading">
+      <div class="spinner"></div>
+      <p>Đang tải bài viết...</p>
+     </div>
+     <div id="post-list" style="display: grid; gap: 25px;"><!-- Posts will be rendered here -->
+     </div>
+    </div>
+   </section><!-- Tra Cứu TCVN -->
+   <section id="tcvn" class="section">
+    <div class="content-card">
+     <h2>📚 Tra Cứu Tiêu Chuẩn TCVN</h2>
+     <p style="color: #7f8c8d; margin-bottom: 25px;">Danh mục các tiêu chuẩn xây dựng Việt Nam - Tìm kiếm và lọc theo lĩnh vực</p>
+     <div style="margin-bottom: 30px; display: flex; gap: 15px; flex-wrap: wrap;"><input type="text" id="tcvn-search" class="search-box" placeholder="Tìm kiếm TCVN..." onkeyup="filterTCVN()" style="flex: 1; min-width: 250px;"> <select id="tcvn-filter" class="filter-select" onchange="filterTCVN()"> <option value="">Tất cả lĩnh vực</option> <option value="ket-cau">Kết Cấu Bê Tông</option> <option value="vat-lieu">Vật Liệu Xây Dựng</option> <option value="dinh-muc">Định Mức Xây Dựng</option> <option value="nha-cong-trinh">Nhà &amp; Công Trình</option> <option value="an-toan">An Toàn Lao Động</option> <option value="moi-truong">Môi Trường</option> </select>
+     </div>
+     <div id="tcvn-list" style="display: grid; gap: 20px;"><!-- TCVN items will be rendered here -->
+     </div>
+    </div>
+   </section><!-- Liên Hệ -->
+   <section id="lien-he" class="section">
+    <div class="content-card">
+     <h2>📞 Liên Hệ Với Chúng Tôi</h2>
+     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 30px;">
+      <div style="text-align: center; padding: 30px; background: #f8f9fa; border-radius: 12px;">
+       <div style="font-size: 48px; margin-bottom: 15px;">
+        📞
+       </div>
+       <h3 style="color: #1e3c72; margin-bottom: 10px;">Điện Thoại</h3>
+       <p style="color: #555; font-size: 18px; font-weight: 600;" id="contact-phone">09170363968</p>
+      </div>
+      <div style="text-align: center; padding: 30px; background: #f8f9fa; border-radius: 12px;">
+       <div style="font-size: 48px; margin-bottom: 15px;">
+        ✉️
+       </div>
+       <h3 style="color: #1e3c72; margin-bottom: 10px;">Email</h3>
+       <p style="color: #555; font-size: 18px; font-weight: 600;" id="contact-email">mastercam_dn@yahoo.com</p>
+      </div>
+      <div style="text-align: center; padding: 30px; background: #f8f9fa; border-radius: 12px;">
+       <div style="font-size: 48px; margin-bottom: 15px;">
+        🌐
+       </div>
+       <h3 style="color: #1e3c72; margin-bottom: 10px;">Website</h3>
+       <p style="color: #555; font-size: 18px; font-weight: 600;"><a href="https://masterengpro.com" target="_blank" rel="noopener noreferrer" id="contact-website">masterengpro.com</a></p>
+      </div>
+     </div>
+     <div style="margin-top: 40px; padding: 30px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); border-radius: 12px; color: white; text-align: center;">
+      <h3 style="font-size: 24px; margin-bottom: 15px;">Sẵn sàng hỗ trợ bạn</h3>
+      <p style="font-size: 16px; opacity: 0.95;">Liên hệ với chúng tôi để được tư vấn và hỗ trợ về các giải pháp kỹ thuật xây dựng</p>
+     </div>
+    </div>
+   </section>
+  </main><!-- Post Modal -->
+  <div id="post-modal" class="modal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2 id="post-modal-title">Đăng Bài Viết Mới</h2><button class="close-modal" onclick="closePostModal()">×</button>
+    </div>
+    <form id="post-form" onsubmit="savePost(event)">
+     <div class="form-group"><label for="post-title">Tiêu đề bài viết *</label> <input type="text" id="post-title" required placeholder="Nhập tiêu đề">
+     </div>
+     <div class="form-group"><label for="post-category">Danh mục *</label> <select id="post-category" required> <option value="">Chọn danh mục</option> <option value="ky-thuat">Kỹ Thuật Xây Dựng</option> <option value="vat-lieu">Vật Liệu Xây Dựng</option> <option value="quan-ly">Quản Lý Dự Án</option> <option value="phap-ly">Pháp Lý &amp; Quy Chuẩn</option> <option value="kinh-nghiem">Kinh Nghiệm Thực Tế</option> <option value="khac">Khác</option> </select>
+     </div>
+     <div class="form-group"><label for="post-content">Nội dung *</label> <textarea id="post-content" rows="8" required placeholder="Nhập nội dung bài viết..."></textarea>
+     </div>
+     <div class="form-group"><label for="post-tags">Thẻ tag (cách nhau bởi dấu phẩy)</label> <input type="text" id="post-tags" placeholder="Ví dụ: bê tông, xây dựng, TCVN">
+     </div>
+     <div class="button-group"><button type="submit" class="btn btn-primary" id="post-save-btn"> 📝 Đăng Bài </button> <button type="button" class="btn btn-secondary" onclick="closePostModal()"> ✕ Hủy </button>
+     </div>
+    </form>
+   </div>
+  </div><!-- Add/Edit Tender Modal -->
+  <div id="tender-modal" class="modal">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2 id="modal-title">Thêm Hồ Sơ Đấu Thầu</h2><button class="close-modal" onclick="closeModal()">×</button>
+    </div>
+    <form id="tender-form" onsubmit="saveTender(event)">
+     <div class="form-group"><label for="ten-goi-thau">Tên gói thầu *</label> <input type="text" id="ten-goi-thau" required>
+     </div>
+     <div class="form-grid">
+      <div class="form-group"><label for="ma-tbmt">Mã TBMT</label> <input type="text" id="ma-tbmt">
+      </div>
+      <div class="form-group"><label for="ben-moi-thau">Bên mời thầu *</label> <input type="text" id="ben-moi-thau" required>
+      </div>
+     </div>
+     <div class="form-grid">
+      <div class="form-group"><label for="gia-tri">Giá trị gói thầu (VNĐ) *</label> <input type="number" id="gia-tri" required min="0">
+      </div>
+      <div class="form-group"><label for="gia-tri-du-toan">Giá dự toán (VNĐ)</label> <input type="number" id="gia-tri-du-toan" min="0">
+      </div>
+     </div>
+     <div class="form-grid">
+      <div class="form-group"><label for="thoi-gian">Thời gian thực hiện (ngày) *</label> <input type="number" id="thoi-gian" required min="1">
+      </div>
+      <div class="form-group"><label for="hinh-thuc">Hình thức đấu thầu *</label> <select id="hinh-thuc" required> <option value="rong-rai">Đấu thầu rộng rãi</option> <option value="han-che">Đấu thầu hạn chế</option> <option value="chi-dinh">Chỉ định thầu</option> </select>
+      </div>
+     </div>
+     <div class="form-grid">
+      <div class="form-group"><label for="ngay-dang">Ngày đăng tải *</label> <input type="date" id="ngay-dang" required>
+      </div>
+      <div class="form-group"><label for="ngay-dong">Ngày đóng thầu *</label> <input type="date" id="ngay-dong" required>
+      </div>
+     </div>
+     <div class="form-grid">
+      <div class="form-group"><label for="dia-diem">Địa điểm thi công</label> <input type="text" id="dia-diem">
+      </div>
+      <div class="form-group"><label for="trang-thai">Trạng thái *</label> <select id="trang-thai" required> <option value="dang-mo">Đang mở</option> <option value="sap-dong">Sắp đóng</option> <option value="da-dong">Đã đóng</option> <option value="trung-thau">Trúng thầu</option> </select>
+      </div>
+     </div>
+     <div class="form-group"><label for="ghi-chu">Ghi chú</label> <textarea id="ghi-chu" rows="3"></textarea>
+     </div>
+     <div class="button-group"><button type="submit" class="btn btn-primary" id="save-btn"> 💾 Lưu Hồ Sơ </button> <button type="button" class="btn btn-secondary" onclick="closeModal()"> ✕ Hủy </button>
+     </div>
+    </form>
+   </div>
+  </div><!-- Footer -->
+  <footer class="footer">
+   <div class="footer-content">
+    <p>© 2025 <strong id="footer-company">MASTERENGPRO</strong>. Công nghệ - cho giải pháp toàn diện</p>
+    <p><a href="https://masterengpro.com" target="_blank" rel="noopener noreferrer" id="footer-website">masterengpro.com</a></p>
+   </div>
+  </footer>
+  <script>
+    let allTenders = [];
+    let allPosts = [];
+    let editingTenderId = null;
+    let editingPostId = null;
+
+    const defaultConfig = {
+      company_name: "MASTERENGPRO",
+      company_slogan: "Công nghệ - cho giải pháp toàn diện",
+      hotline: "09170363968",
+      email: "mastercam_dn@yahoo.com",
+      website: "masterengpro.com"
+    };
+
+    // TCVN Database
+    const tcvnDatabase = [
+      // Kết Cấu Bê Tông
+      { category: 'ket-cau', title: 'Kết Cấu Bê Tông', description: 'TCVN 5574:2018 - Kết cấu bê tông và bê tông cốt thép - Tiêu chuẩn thiết kế' },
+      { category: 'ket-cau', title: 'Kết Cấu Bê Tông', description: 'TCVN 11823:2017 - Kết cấu bê tông cốt thép toàn khối - Tiêu chuẩn thiết kế' },
+      { category: 'ket-cau', title: 'Kết Cấu Bê Tông', description: 'TCVN 9346:2012 - Thiết kế và thi công công trình bê tông cốt thép' },
+      { category: 'ket-cau', title: 'Kết Cấu Bê Tông', description: 'TCVN 4453:1995 - Kết cấu bê tông và bê tông cốt thép - Quy phạm thi công và nghiệm thu' },
+      
+      // Vật Liệu Xây Dựng
+      { category: 'vat-lieu', title: 'Vật Liệu Xây Dựng', description: 'TCVN 2682:2009 - Xi măng poóc lăng - Yêu cầu kỹ thuật' },
+      { category: 'vat-lieu', title: 'Vật Liệu Xây Dựng', description: 'TCVN 7570:2006 - Cát, sỏi và đá dăm dùng làm cốt liệu cho bê tông' },
+      { category: 'vat-lieu', title: 'Vật Liệu Xây Dựng', description: 'TCVN 1651:2008 - Cốt thép bê tông - Yêu cầu kỹ thuật' },
+      { category: 'vat-lieu', title: 'Vật Liệu Xây Dựng', description: 'TCVN 6355:2009 - Gạch xây không nung - Yêu cầu kỹ thuật' },
+      { category: 'vat-lieu', title: 'Vật Liệu Xây Dựng', description: 'TCVN 1450:1998 - Gạch đất sét nung - Yêu cầu kỹ thuật' },
+      { category: 'vat-lieu', title: 'Vật Liệu Xây Dựng', description: 'TCVN 4506:2012 - Nước cho bê tông và vữa - Yêu cầu kỹ thuật' },
+      
+      // Định Mức Xây Dựng
+      { category: 'dinh-muc', title: 'Định Mức Xây Dựng', description: 'Thông tư 09/2021/TT-BXD - Định mức dự toán xây dựng công trình' },
+      { category: 'dinh-muc', title: 'Định Mức Xây Dựng', description: 'Thông tư 07/2016/TT-BXD - Hướng dẫn lập và quản lý chi phí đầu tư xây dựng' },
+      { category: 'dinh-muc', title: 'Định Mức Xây Dựng', description: 'TCVN 4447:1987 - Định mức tiêu hao vật liệu xây dựng' },
+      { category: 'dinh-muc', title: 'Định Mức Xây Dựng', description: 'TCVN 4448:1987 - Định mức thời gian sử dụng máy thi công' },
+      
+      // Nhà & Công Trình
+      { category: 'nha-cong-trinh', title: 'Nhà & Công Trình', description: 'QCVN 01:2021/BXD - Quy chuẩn kỹ thuật quốc gia về quy hoạch xây dựng' },
+      { category: 'nha-cong-trinh', title: 'Nhà & Công Trình', description: 'QCVN 03:2021/BXD - Quy chuẩn kỹ thuật quốc gia về nhà cao tầng' },
+      { category: 'nha-cong-trinh', title: 'Nhà & Công Trình', description: 'TCVN 9385:2012 - Nhà cao tầng - Thiết kế cọc khoan nhồi' },
+      { category: 'nha-cong-trinh', title: 'Nhà & Công Trình', description: 'TCVN 4605:2012 - Công trình thủy lợi - Yêu cầu thiết kế' },
+      { category: 'nha-cong-trinh', title: 'Nhà & Công Trình', description: 'TCVN 2737:1995 - Tải trọng và tác động - Tiêu chuẩn thiết kế' },
+      
+      // An Toàn Lao Động
+      { category: 'an-toan', title: 'An Toàn Lao Động', description: 'TCVN 5308:2009 - An toàn lao động - Yêu cầu chung' },
+      { category: 'an-toan', title: 'An Toàn Lao Động', description: 'QCVN 18:2021/BXD - Quy chuẩn kỹ thuật quốc gia về an toàn lao động trong thi công xây dựng' },
+      { category: 'an-toan', title: 'An Toàn Lao Động', description: 'TCVN 4244:2012 - Hệ thống quản lý an toàn và sức khỏe nghề nghiệp' },
+      { category: 'an-toan', title: 'An Toàn Lao Động', description: 'TCVN 6273:2020 - Giàn giáo - Yêu cầu an toàn' },
+      
+      // Môi Trường
+      { category: 'moi-truong', title: 'Môi Trường', description: 'QCVN 14:2008/BTNMT - Quy chuẩn kỹ thuật quốc gia về nước thải sinh hoạt' },
+      { category: 'moi-truong', title: 'Môi Trường', description: 'QCVN 26:2010/BTNMT - Quy chuẩn kỹ thuật quốc gia về tiếng ồn' },
+      { category: 'moi-truong', title: 'Môi Trường', description: 'TCVN 7572:2006 - Bê tông - Hướng dẫn bảo vệ môi trường trong sản xuất' },
+      { category: 'moi-truong', title: 'Môi Trường', description: 'TCVN 6980:2001 - Chất thải rắn - Phân loại và mã số' }
+    ];
+
+    let filteredTCVN = [...tcvnDatabase];
+
+    async function onConfigChange(config) {
+      document.getElementById('company-name').textContent = config.company_name || defaultConfig.company_name;
+      document.getElementById('company-slogan').textContent = config.company_slogan || defaultConfig.company_slogan;
+      document.getElementById('header-hotline').textContent = config.hotline || defaultConfig.hotline;
+      document.getElementById('header-email').textContent = config.email || defaultConfig.email;
+      document.getElementById('contact-phone').textContent = config.hotline || defaultConfig.hotline;
+      document.getElementById('contact-email').textContent = config.email || defaultConfig.email;
+      document.getElementById('contact-website').textContent = config.website || defaultConfig.website;
+      document.getElementById('contact-website').href = `https://${config.website || defaultConfig.website}`;
+      document.getElementById('footer-company').textContent = config.company_name || defaultConfig.company_name;
+      document.getElementById('footer-website').textContent = config.website || defaultConfig.website;
+      document.getElementById('footer-website').href = `https://${config.website || defaultConfig.website}`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["company_name", config.company_name || defaultConfig.company_name],
+        ["company_slogan", config.company_slogan || defaultConfig.company_slogan],
+        ["hotline", config.hotline || defaultConfig.hotline],
+        ["email", config.email || defaultConfig.email],
+        ["website", config.website || defaultConfig.website]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    const dataHandler = {
+      onDataChanged(data) {
+        const allData = data || [];
+        allTenders = allData.filter(item => item.type === 'tender' || !item.type);
+        allPosts = allData.filter(item => item.type === 'post');
+        renderTenders();
+        renderPosts();
+      }
+    };
+
+    async function initDataSdk() {
+      if (window.dataSdk) {
+        const result = await window.dataSdk.init(dataHandler);
+        if (!result.isOk) {
+          showToast('Không thể kết nối dữ liệu', 'error');
+        }
+      }
+    }
+
+    initDataSdk();
+    renderTCVN();
+
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+      const buttons = document.querySelectorAll('.nav-button');
+      
+      sections.forEach(section => section.classList.remove('active'));
+      buttons.forEach(btn => btn.classList.remove('active'));
+      
+      document.getElementById(sectionId).classList.add('active');
+      event.target.classList.add('active');
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${type} show`;
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    function openAddTenderModal() {
+      editingTenderId = null;
+      document.getElementById('modal-title').textContent = 'Thêm Hồ Sơ Đấu Thầu';
+      document.getElementById('tender-form').reset();
+      document.getElementById('tender-modal').classList.add('show');
+    }
+
+    function closeModal() {
+      document.getElementById('tender-modal').classList.remove('show');
+      editingTenderId = null;
+    }
+
+    async function saveTender(event) {
+      event.preventDefault();
+      
+      if (allTenders.length >= 999 && !editingTenderId) {
+        showToast('Đã đạt giới hạn 999 hồ sơ. Vui lòng xóa hồ sơ cũ trước khi thêm mới.', 'error');
+        return;
+      }
+
+      const saveBtn = document.getElementById('save-btn');
+      saveBtn.disabled = true;
+      saveBtn.innerHTML = '⏳ Đang lưu...';
+
+      const tenderData = {
+        ten_goi_thau: document.getElementById('ten-goi-thau').value,
+        ma_tbmt: document.getElementById('ma-tbmt').value,
+        ben_moi_thau: document.getElementById('ben-moi-thau').value,
+        gia_tri: parseFloat(document.getElementById('gia-tri').value),
+        gia_tri_du_toan: parseFloat(document.getElementById('gia-tri-du-toan').value) || 0,
+        thoi_gian_thuc_hien: parseInt(document.getElementById('thoi-gian').value),
+        hinh_thuc: document.getElementById('hinh-thuc').value,
+        trang_thai: document.getElementById('trang-thai').value,
+        ngay_dang: document.getElementById('ngay-dang').value,
+        ngay_dong: document.getElementById('ngay-dong').value,
+        dia_diem: document.getElementById('dia-diem').value,
+        ghi_chu: document.getElementById('ghi-chu').value,
+        created_at: new Date().toISOString()
+      };
+
+      let result;
+      if (editingTenderId) {
+        const tender = allTenders.find(t => t.__backendId === editingTenderId);
+        if (tender) {
+          const updatedTender = { ...tender, ...tenderData };
+          result = await window.dataSdk.update(updatedTender);
+        }
+      } else {
+        result = await window.dataSdk.create(tenderData);
+      }
+
+      saveBtn.disabled = false;
+      saveBtn.innerHTML = '💾 Lưu Hồ Sơ';
+
+      if (result.isOk) {
+        showToast(editingTenderId ? 'Cập nhật hồ sơ thành công!' : 'Thêm hồ sơ thành công!', 'success');
+        closeModal();
+      } else {
+        showToast('Có lỗi xảy ra. Vui lòng thử lại.', 'error');
+      }
+    }
+
+    function editTender(tenderId) {
+      const tender = allTenders.find(t => t.__backendId === tenderId);
+      if (!tender) return;
+
+      editingTenderId = tenderId;
+      document.getElementById('modal-title').textContent = 'Chỉnh Sửa Hồ Sơ Đấu Thầu';
+      
+      document.getElementById('ten-goi-thau').value = tender.ten_goi_thau || '';
+      document.getElementById('ma-tbmt').value = tender.ma_tbmt || '';
+      document.getElementById('ben-moi-thau').value = tender.ben_moi_thau || '';
+      document.getElementById('gia-tri').value = tender.gia_tri || '';
+      document.getElementById('gia-tri-du-toan').value = tender.gia_tri_du_toan || '';
+      document.getElementById('thoi-gian').value = tender.thoi_gian_thuc_hien || '';
+      document.getElementById('hinh-thuc').value = tender.hinh_thuc || 'rong-rai';
+      document.getElementById('trang-thai').value = tender.trang_thai || 'dang-mo';
+      document.getElementById('ngay-dang').value = tender.ngay_dang || '';
+      document.getElementById('ngay-dong').value = tender.ngay_dong || '';
+      document.getElementById('dia-diem').value = tender.dia_diem || '';
+      document.getElementById('ghi-chu').value = tender.ghi_chu || '';
+
+      document.getElementById('tender-modal').classList.add('show');
+    }
+
+    async function deleteTender(tenderId) {
+      const tender = allTenders.find(t => t.__backendId === tenderId);
+      if (!tender) return;
+
+      const tenderElement = document.querySelector(`[data-tender-id="${tenderId}"]`);
+      if (!tenderElement) return;
+
+      const deleteBtn = tenderElement.querySelector('.btn-danger');
+      const originalContent = deleteBtn.innerHTML;
+      
+      if (deleteBtn.classList.contains('confirming')) {
+        deleteBtn.disabled = true;
+        deleteBtn.innerHTML = '⏳ Đang xóa...';
+
+        const result = await window.dataSdk.delete(tender);
+
+        if (result.isOk) {
+          showToast('Xóa hồ sơ thành công!', 'success');
+        } else {
+          showToast('Có lỗi xảy ra khi xóa. Vui lòng thử lại.', 'error');
+          deleteBtn.disabled = false;
+          deleteBtn.innerHTML = originalContent;
+        }
+        deleteBtn.classList.remove('confirming');
+      } else {
+        deleteBtn.classList.add('confirming');
+        deleteBtn.innerHTML = '✓ Xác nhận xóa?';
+        
+        setTimeout(() => {
+          deleteBtn.classList.remove('confirming');
+          deleteBtn.innerHTML = originalContent;
+        }, 3000);
+      }
+    }
+
+    function filterTenders() {
+      const statusFilter = document.getElementById('status-filter').value;
+      const searchQuery = document.getElementById('search-box').value.toLowerCase();
+
+      let filtered = allTenders;
+
+      if (statusFilter) {
+        filtered = filtered.filter(t => t.trang_thai === statusFilter);
+      }
+
+      if (searchQuery) {
+        filtered = filtered.filter(t => 
+          (t.ten_goi_thau && t.ten_goi_thau.toLowerCase().includes(searchQuery)) ||
+          (t.ma_tbmt && t.ma_tbmt.toLowerCase().includes(searchQuery)) ||
+          (t.ben_moi_thau && t.ben_moi_thau.toLowerCase().includes(searchQuery))
+        );
+      }
+
+      renderTenders(filtered);
+    }
+
+    function renderTenders(tenders = allTenders) {
+      const container = document.getElementById('tender-list');
+      
+      if (!tenders || tenders.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📋</div>
+            <h3>Chưa có hồ sơ đấu thầu nào</h3>
+            <p>Nhấn "Thêm Hồ Sơ Mới" để bắt đầu</p>
+          </div>
+        `;
+        return;
+      }
+
+      const sortedTenders = [...tenders].sort((a, b) => 
+        new Date(b.created_at) - new Date(a.created_at)
+      );
+
+      container.innerHTML = sortedTenders.map(tender => {
+        const statusClass = `status-${tender.trang_thai}`;
+        const statusText = getStatusText(tender.trang_thai);
+        const hinhThucText = getHinhThucText(tender.hinh_thuc);
+
+        return `
+          <div class="tender-item" data-tender-id="${tender.__backendId}">
+            <div class="tender-header">
+              <div class="tender-title">
+                <h3>${tender.ten_goi_thau}</h3>
+                ${tender.ma_tbmt ? `<div class="tender-code">Mã TBMT: ${tender.ma_tbmt}</div>` : ''}
+              </div>
+              <div class="tender-status ${statusClass}">${statusText}</div>
+            </div>
+            
+            <div class="tender-info">
+              <div class="info-item">
+                <strong>Bên mời thầu</strong>
+                ${tender.ben_moi_thau}
+              </div>
+              <div class="info-item">
+                <strong>Giá trị gói thầu</strong>
+                ${formatNumber(tender.gia_tri)} VNĐ
+              </div>
+              <div class="info-item">
+                <strong>Thời gian thực hiện</strong>
+                ${tender.thoi_gian_thuc_hien} ngày
+              </div>
+              <div class="info-item">
+                <strong>Hình thức</strong>
+                ${hinhThucText}
+              </div>
+              <div class="info-item">
+                <strong>Ngày đóng thầu</strong>
+                ${formatDate(tender.ngay_dong)}
+              </div>
+              ${tender.dia_diem ? `
+                <div class="info-item">
+                  <strong>Địa điểm</strong>
+                  ${tender.dia_diem}
+                </div>
+              ` : ''}
+            </div>
+
+            ${tender.ghi_chu ? `
+              <div style="margin-top: 15px; padding: 12px; background: #f8f9fa; border-radius: 8px; font-size: 14px; color: #555;">
+                <strong>Ghi chú:</strong> ${tender.ghi_chu}
+              </div>
+            ` : ''}
+
+            <div class="tender-actions">
+              <button class="btn btn-primary" onclick="editTender('${tender.__backendId}')">
+                ✏️ Chỉnh sửa
+              </button>
+              <button class="btn btn-danger" onclick="deleteTender('${tender.__backendId}')">
+                🗑️ Xóa
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function getStatusText(status) {
+      const statusMap = {
+        'dang-mo': 'Đang mở',
+        'sap-dong': 'Sắp đóng',
+        'da-dong': 'Đã đóng',
+        'trung-thau': 'Trúng thầu'
+      };
+      return statusMap[status] || status;
+    }
+
+    function getHinhThucText(hinhThuc) {
+      const hinhThucMap = {
+        'rong-rai': 'Đấu thầu rộng rãi',
+        'han-che': 'Đấu thầu hạn chế',
+        'chi-dinh': 'Chỉ định thầu'
+      };
+      return hinhThucMap[hinhThuc] || hinhThuc;
+    }
+
+    function formatNumber(num) {
+      return new Intl.NumberFormat('vi-VN').format(num);
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('vi-VN');
+    }
+
+    function showTool(toolName) {
+      document.getElementById('tool-selector').style.display = 'none';
+      document.getElementById('tool-details').style.display = 'block';
+      
+      const allTools = document.querySelectorAll('.tool-detail');
+      allTools.forEach(tool => tool.style.display = 'none');
+      
+      const selectedTool = document.getElementById(`tool-${toolName}`);
+      if (selectedTool) {
+        selectedTool.style.display = 'block';
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function backToToolList() {
+      document.getElementById('tool-selector').style.display = 'grid';
+      document.getElementById('tool-details').style.display = 'none';
+      
+      const allResults = ['vx-result', 'vt-result', 'bt-result', 'cp-result', 'kc-result', 'kl-result'];
+      allResults.forEach(id => {
+        const elem = document.getElementById(id);
+        if (elem) elem.style.display = 'none';
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Vữa Xây Calculator
+    function calculateVuaXay(event) {
+      event.preventDefault();
+      
+      const chieuDay = parseInt(document.getElementById('vx-chieu-day').value);
+      const mac = parseInt(document.getElementById('vx-mac').value);
+      const dienTich = parseFloat(document.getElementById('vx-dien-tich').value);
+
+      // Định mức vữa xây gạch 4 lỗ (kg xi măng và m³ cát cho 1m² tường)
+      const dinhMuc = {
+        50: { xiMang: 7.5, cat: 0.020 },
+        75: { xiMang: 9.5, cat: 0.020 },
+        100: { xiMang: 11.5, cat: 0.020 }
+      };
+
+      const normXiMang = dinhMuc[mac].xiMang;
+      const normCat = dinhMuc[mac].cat;
+
+      // Nhân đôi nếu tường 220mm (1 gạch)
+      const heSo = chieuDay === 220 ? 2 : 1;
+
+      const xiMang = normXiMang * dienTich * heSo;
+      const cat = normCat * dienTich * heSo;
+
+      document.getElementById('vx-xi-mang').textContent = `${xiMang.toFixed(1)} kg (${(xiMang / 50).toFixed(1)} bao 50kg)`;
+      document.getElementById('vx-cat').textContent = `${cat.toFixed(3)} m³`;
+      document.getElementById('vx-result').style.display = 'block';
+      
+      showToast('Tính toán vữa xây thành công!', 'success');
+    }
+
+    // Vữa Tô Calculator
+    function calculateVuaTo(event) {
+      event.preventDefault();
+      
+      const mac = parseInt(document.getElementById('vt-mac').value);
+      const chieuDay = parseInt(document.getElementById('vt-chieu-day').value);
+      const dienTich = parseFloat(document.getElementById('vt-dien-tich').value);
+
+      // Định mức vữa tô/trát (kg xi măng và m³ cát mịn cho 1m² - chiều dày 10mm)
+      const dinhMuc = {
+        50: { xiMang: 13, cat: 0.0165 },
+        75: { xiMang: 15, cat: 0.0165 },
+        100: { xiMang: 17, cat: 0.0165 }
+      };
+
+      const normXiMang = dinhMuc[mac].xiMang;
+      const normCat = dinhMuc[mac].cat;
+
+      // Nếu tô 15mm thì tăng 1.5 lần vật liệu
+      const heSo = chieuDay === 15 ? 1.5 : 1;
+
+      const xiMang = normXiMang * dienTich * heSo;
+      const cat = normCat * dienTich * heSo;
+
+      document.getElementById('vt-xi-mang').textContent = `${xiMang.toFixed(1)} kg (${(xiMang / 50).toFixed(1)} bao 50kg)`;
+      document.getElementById('vt-cat').textContent = `${cat.toFixed(3)} m³`;
+      document.getElementById('vt-result').style.display = 'block';
+      
+      showToast('Tính toán vữa tô thành công!', 'success');
+    }
+
+    // Bê Tông Calculator
+    function calculateBeTong(event) {
+      event.preventDefault();
+      
+      const mac = parseInt(document.getElementById('bt-mac').value);
+      const theTich = parseFloat(document.getElementById('bt-the-tich').value);
+
+      // Định mức bê tông - Xi măng PCB40, Cát vàng, Đá 1×2 (cho 1m³ bê tông)
+      const dinhMuc = {
+        150: { xiMang: 250, cat: 0.50, da: 0.87 },
+        200: { xiMang: 300, cat: 0.48, da: 0.85 },
+        250: { xiMang: 350, cat: 0.46, da: 0.83 },
+        300: { xiMang: 400, cat: 0.45, da: 0.81 }
+      };
+
+      const norm = dinhMuc[mac];
+      
+      // Tự động cộng thêm 6% xi măng khi đổ tay
+      const xiMangGoc = norm.xiMang * theTich;
+      const xiMang = xiMangGoc * 1.06;
+      const cat = norm.cat * theTich;
+      const da = norm.da * theTich;
+      const nuoc = xiMang * 0.5; // Tỷ lệ nước/xi măng = 0.5
+
+      document.getElementById('bt-xi-mang').textContent = `${xiMang.toFixed(0)} kg (${(xiMang / 50).toFixed(1)} bao 50kg) - Đã +6% đổ tay`;
+      document.getElementById('bt-cat').textContent = `${cat.toFixed(2)} m³`;
+      document.getElementById('bt-da').textContent = `${da.toFixed(2)} m³`;
+      document.getElementById('bt-nuoc').textContent = `${nuoc.toFixed(0)} lít`;
+      document.getElementById('bt-result').style.display = 'block';
+      
+      showToast('Tính toán bê tông thành công!', 'success');
+    }
+
+    // Chi Phí Calculator
+    function calculateChiPhi(event) {
+      event.preventDefault();
+      
+      const dienTich = parseFloat(document.getElementById('cp-dien-tich').value);
+      const donGia = parseFloat(document.getElementById('cp-don-gia').value);
+      const tyLeThietKe = parseFloat(document.getElementById('cp-thiet-ke').value) / 100;
+      const tyLeGiamSat = parseFloat(document.getElementById('cp-giam-sat').value) / 100;
+      const tyLeDuPhong = parseFloat(document.getElementById('cp-du-phong').value) / 100;
+
+      const cpXayDung = dienTich * donGia;
+      const cpThietKe = cpXayDung * tyLeThietKe;
+      const cpGiamSat = cpXayDung * tyLeGiamSat;
+      const cpDuPhong = cpXayDung * tyLeDuPhong;
+      const tongChiPhi = cpXayDung + cpThietKe + cpGiamSat + cpDuPhong;
+
+      document.getElementById('cp-xay-dung').textContent = formatNumber(cpXayDung) + ' VNĐ';
+      document.getElementById('cp-thiet-ke-result').textContent = formatNumber(cpThietKe) + ' VNĐ';
+      document.getElementById('cp-giam-sat-result').textContent = formatNumber(cpGiamSat) + ' VNĐ';
+      document.getElementById('cp-du-phong-result').textContent = formatNumber(cpDuPhong) + ' VNĐ';
+      document.getElementById('cp-tong').textContent = formatNumber(tongChiPhi) + ' VNĐ';
+      document.getElementById('cp-result').style.display = 'block';
+      
+      showToast('Tính toán chi phí thành công!', 'success');
+    }
+
+    // Kết Cấu Functions
+    function changeKetCauType() {
+      const loai = document.getElementById('kc-loai').value;
+      
+      document.getElementById('form-cot').style.display = loai === 'cot' ? 'block' : 'none';
+      document.getElementById('form-dam').style.display = loai === 'dam' ? 'block' : 'none';
+      document.getElementById('form-san').style.display = loai === 'san' ? 'block' : 'none';
+      document.getElementById('kc-result').style.display = 'none';
+    }
+
+    function calculateCot(event) {
+      event.preventDefault();
+      
+      const chieuCao = parseFloat(document.getElementById('cot-chieu-cao').value);
+      const taiTrong = parseFloat(document.getElementById('cot-tai-trong').value);
+
+      // Tính toán sơ bộ kích thước cột (giả sử ứng suất chịu nén 80 kg/cm²)
+      const dienTichYeuCau = (taiTrong * 1000) / 80; // cm²
+      const kichThuoc = Math.ceil(Math.sqrt(dienTichYeuCau) / 5) * 5; // Làm tròn lên bội số 5
+
+      // Cốt thép dọc (1.2-1.5% diện tích cột)
+      const dienTichCot = kichThuoc * kichThuoc;
+      const tyLeCotThep = 1.3;
+      const dienTichCotThep = dienTichCot * tyLeCotThep / 100;
+      const soThepD = Math.ceil(dienTichCotThep / 2.01); // Diện tích thép D16 = 2.01 cm²
+
+      const resultHtml = `
+        <div style="display: grid; gap: 15px;">
+          <div style="background: white; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Kích thước cột đề xuất</div>
+            <div style="font-size: 24px; font-weight: 700; color: #2a5298;">${kichThuoc}×${kichThuoc} mm</div>
+          </div>
+          <div style="background: white; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Cốt thép dọc</div>
+            <div style="font-size: 24px; font-weight: 700; color: #e67e22;">${soThepD}Ø16</div>
+          </div>
+          <div style="background: white; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Cốt đai</div>
+            <div style="font-size: 24px; font-weight: 700; color: #27ae60;">Ø8@200</div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('kc-result-content').innerHTML = resultHtml;
+      document.getElementById('kc-result').style.display = 'block';
+      showToast('Tính toán cột thành công!', 'success');
+    }
+
+    function calculateDam(event) {
+      event.preventDefault();
+      
+      const nhip = parseFloat(document.getElementById('dam-nhip').value);
+      const taiTrong = parseFloat(document.getElementById('dam-tai-trong').value);
+
+      // Tính toán sơ bộ kích thước dầm
+      const chieuCao = Math.ceil((nhip * 1000) / 12 / 5) * 5; // h = L/12
+      const chieuRong = Math.ceil(chieuCao / 2 / 5) * 5; // b = h/2
+
+      // Moment uốn M = q*L²/8
+      const moment = taiTrong * nhip * nhip / 8; // tấn.m
+
+      const resultHtml = `
+        <div style="display: grid; gap: 15px;">
+          <div style="background: white; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Kích thước dầm đề xuất</div>
+            <div style="font-size: 24px; font-weight: 700; color: #2a5298;">${chieuRong}×${chieuCao} mm</div>
+          </div>
+          <div style="background: white; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Moment uốn lớn nhất</div>
+            <div style="font-size: 24px; font-weight: 700; color: #e67e22;">${moment.toFixed(2)} tấn.m</div>
+          </div>
+          <div style="background: white; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Cốt thép dọc dự kiến</div>
+            <div style="font-size: 24px; font-weight: 700; color: #27ae60;">4-6Ø18-22</div>
+          </div>
+          <div style="background: white; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Cốt đai</div>
+            <div style="font-size: 24px; font-weight: 700; color: #9b59b6;">Ø8@150</div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('kc-result-content').innerHTML = resultHtml;
+      document.getElementById('kc-result').style.display = 'block';
+      showToast('Tính toán dầm thành công!', 'success');
+    }
+
+    function calculateSan(event) {
+      event.preventDefault();
+      
+      const loai = document.getElementById('san-loai').value;
+      const nhip = parseFloat(document.getElementById('san-nhip').value);
+      const taiTrong = parseFloat(document.getElementById('san-tai-trong').value);
+
+      // Tính chiều dày sàn
+      let chieuDay;
+      if (loai === '1-phia') {
+        chieuDay = Math.ceil(nhip * 1000 / 30 / 10) * 10; // h = L/30
+      } else {
+        chieuDay = Math.ceil(nhip * 1000 / 40 / 10) * 10; // h = L/40
+      }
+
+      // Đảm bảo chiều dày tối thiểu
+      if (chieuDay < 80) chieuDay = 80;
+      if (chieuDay > 200) chieuDay = 200;
+
+      const resultHtml = `
+        <div style="display: grid; gap: 15px;">
+          <div style="background: white; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Loại sàn</div>
+            <div style="font-size: 24px; font-weight: 700; color: #2a5298;">${loai === '1-phia' ? 'Sàn 1 phía' : 'Sàn 2 phía'}</div>
+          </div>
+          <div style="background: white; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Chiều dày sàn đề xuất</div>
+            <div style="font-size: 24px; font-weight: 700; color: #e67e22;">${chieuDay} mm</div>
+          </div>
+          <div style="background: white; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Tải trọng khai báo</div>
+            <div style="font-size: 24px; font-weight: 700; color: #27ae60;">${taiTrong} kg/m²</div>
+          </div>
+          <div style="background: white; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;">Cốt thép đề xuất</div>
+            <div style="font-size: 24px; font-weight: 700; color: #9b59b6;">Ø8-10@150-200</div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('kc-result-content').innerHTML = resultHtml;
+      document.getElementById('kc-result').style.display = 'block';
+      showToast('Tính toán sàn thành công!', 'success');
+    }
+
+    // Khối Lượng Calculator
+    function calculateKhoiLuong(event) {
+      event.preventDefault();
+      
+      const loai = document.getElementById('kl-loai').value;
+      const chieuDai = parseFloat(document.getElementById('kl-chieu-dai').value);
+      const chieuRong = parseFloat(document.getElementById('kl-chieu-rong').value);
+      const chieuSau = parseFloat(document.getElementById('kl-chieu-sau').value);
+
+      // Tính thể tích tự nhiên
+      const theTich = chieuDai * chieuRong * chieuSau;
+
+      // Hệ số đào rời/đắp chặt
+      let heSo;
+      let loaiCongViec;
+      if (loai === 'dao') {
+        heSo = 1.25; // Đất đào rời nở 25%
+        loaiCongViec = 'đào';
+      } else if (loai === 'dap') {
+        heSo = 0.9; // Đất đắp chặt co 10%
+        loaiCongViec = 'đắp';
+      } else {
+        heSo = 1.1; // San lấp
+        loaiCongViec = 'san lấp';
+      }
+
+      const theTichThuc = theTich * heSo;
+      
+      // Tính số chuyến xe (giả sử xe tải 8 tấn, trọng lượng đất 1.6 tấn/m³)
+      const trongLuongDat = theTichThuc * 1.6;
+      const soChuyenXe = Math.ceil(trongLuongDat / 8);
+
+      document.getElementById('kl-the-tich').textContent = `${theTich.toFixed(2)} m³`;
+      document.getElementById('kl-the-tich-thuc').textContent = `${theTichThuc.toFixed(2)} m³ (${loaiCongViec})`;
+      document.getElementById('kl-chuyen-xe').textContent = `${soChuyenXe} chuyến`;
+      document.getElementById('kl-result').style.display = 'block';
+      
+      showToast('Tính toán khối lượng thành công!', 'success');
+    }
+
+    // Post Management Functions
+    function openPostModal() {
+      editingPostId = null;
+      document.getElementById('post-modal-title').textContent = 'Đăng Bài Viết Mới';
+      document.getElementById('post-form').reset();
+      document.getElementById('post-modal').classList.add('show');
+    }
+
+    function closePostModal() {
+      document.getElementById('post-modal').classList.remove('show');
+      editingPostId = null;
+    }
+
+    async function savePost(event) {
+      event.preventDefault();
+      
+      const allData = [...allTenders, ...allPosts];
+      if (allData.length >= 999 && !editingPostId) {
+        showToast('Đã đạt giới hạn 999 bản ghi. Vui lòng xóa dữ liệu cũ trước.', 'error');
+        return;
+      }
+
+      const saveBtn = document.getElementById('post-save-btn');
+      saveBtn.disabled = true;
+      saveBtn.innerHTML = '⏳ Đang đăng...';
+
+      const postData = {
+        type: 'post',
+        post_title: document.getElementById('post-title').value,
+        post_category: document.getElementById('post-category').value,
+        post_content: document.getElementById('post-content').value,
+        post_tags: document.getElementById('post-tags').value,
+        created_at: new Date().toISOString()
+      };
+
+      let result;
+      if (editingPostId) {
+        const post = allPosts.find(p => p.__backendId === editingPostId);
+        if (post) {
+          const updatedPost = { ...post, ...postData };
+          result = await window.dataSdk.update(updatedPost);
+        }
+      } else {
+        result = await window.dataSdk.create(postData);
+      }
+
+      saveBtn.disabled = false;
+      saveBtn.innerHTML = '📝 Đăng Bài';
+
+      if (result.isOk) {
+        showToast(editingPostId ? 'Cập nhật bài viết thành công!' : 'Đăng bài viết thành công!', 'success');
+        closePostModal();
+      } else {
+        showToast('Có lỗi xảy ra. Vui lòng thử lại.', 'error');
+      }
+    }
+
+    function editPost(postId) {
+      const post = allPosts.find(p => p.__backendId === postId);
+      if (!post) return;
+
+      editingPostId = postId;
+      document.getElementById('post-modal-title').textContent = 'Chỉnh Sửa Bài Viết';
+      
+      document.getElementById('post-title').value = post.post_title || '';
+      document.getElementById('post-category').value = post.post_category || '';
+      document.getElementById('post-content').value = post.post_content || '';
+      document.getElementById('post-tags').value = post.post_tags || '';
+
+      document.getElementById('post-modal').classList.add('show');
+    }
+
+    async function deletePost(postId) {
+      const post = allPosts.find(p => p.__backendId === postId);
+      if (!post) return;
+
+      const postElement = document.querySelector(`[data-post-id="${postId}"]`);
+      if (!postElement) return;
+
+      const deleteBtn = postElement.querySelector('.btn-danger');
+      const originalContent = deleteBtn.innerHTML;
+      
+      if (deleteBtn.classList.contains('confirming')) {
+        deleteBtn.disabled = true;
+        deleteBtn.innerHTML = '⏳ Đang xóa...';
+
+        const result = await window.dataSdk.delete(post);
+
+        if (result.isOk) {
+          showToast('Xóa bài viết thành công!', 'success');
+        } else {
+          showToast('Có lỗi xảy ra khi xóa. Vui lòng thử lại.', 'error');
+          deleteBtn.disabled = false;
+          deleteBtn.innerHTML = originalContent;
+        }
+        deleteBtn.classList.remove('confirming');
+      } else {
+        deleteBtn.classList.add('confirming');
+        deleteBtn.innerHTML = '✓ Xác nhận xóa?';
+        
+        setTimeout(() => {
+          deleteBtn.classList.remove('confirming');
+          deleteBtn.innerHTML = originalContent;
+        }, 3000);
+      }
+    }
+
+    function getCategoryName(category) {
+      const categories = {
+        'ky-thuat': 'Kỹ Thuật Xây Dựng',
+        'vat-lieu': 'Vật Liệu Xây Dựng',
+        'quan-ly': 'Quản Lý Dự Án',
+        'phap-ly': 'Pháp Lý & Quy Chuẩn',
+        'kinh-nghiem': 'Kinh Nghiệm Thực Tế',
+        'khac': 'Khác'
+      };
+      return categories[category] || category;
+    }
+
+    function getCategoryColor(category) {
+      const colors = {
+        'ky-thuat': '#3498db',
+        'vat-lieu': '#e67e22',
+        'quan-ly': '#9b59b6',
+        'phap-ly': '#e74c3c',
+        'kinh-nghiem': '#27ae60',
+        'khac': '#95a5a6'
+      };
+      return colors[category] || '#95a5a6';
+    }
+
+    function renderPosts() {
+      const container = document.getElementById('post-list');
+      
+      if (!allPosts || allPosts.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📝</div>
+            <h3>Chưa có bài viết nào</h3>
+            <p>Nhấn "Đăng Bài Mới" để chia sẻ kiến thức</p>
+          </div>
+        `;
+        return;
+      }
+
+      const sortedPosts = [...allPosts].sort((a, b) => 
+        new Date(b.created_at) - new Date(a.created_at)
+      );
+
+      container.innerHTML = sortedPosts.map(post => {
+        const categoryColor = getCategoryColor(post.post_category);
+        const categoryName = getCategoryName(post.post_category);
+        const date = new Date(post.created_at);
+        const dateStr = date.toLocaleDateString('vi-VN', { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+
+        const tags = post.post_tags ? post.post_tags.split(',').map(t => t.trim()).filter(t => t) : [];
+
+        return `
+          <div class="tender-item" data-post-id="${post.__backendId}" style="border-left: 4px solid ${categoryColor};">
+            <div class="tender-header">
+              <div class="tender-title">
+                <h3>${post.post_title}</h3>
+                <div class="tender-code" style="display: flex; align-items: center; gap: 15px; margin-top: 8px;">
+                  <span style="background: ${categoryColor}; color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">
+                    ${categoryName}
+                  </span>
+                  <span>📅 ${dateStr}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div style="margin: 20px 0; color: #555; line-height: 1.8; white-space: pre-wrap;">
+              ${post.post_content}
+            </div>
+
+            ${tags.length > 0 ? `
+              <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px;">
+                ${tags.map(tag => `
+                  <span style="background: #f8f9fa; color: #666; padding: 5px 12px; border-radius: 15px; font-size: 13px;">
+                    #${tag}
+                  </span>
+                `).join('')}
+              </div>
+            ` : ''}
+
+            <div class="tender-actions">
+              <button class="btn btn-primary" onclick="editPost('${post.__backendId}')">
+                ✏️ Chỉnh sửa
+              </button>
+              <button class="btn btn-danger" onclick="deletePost('${post.__backendId}')">
+                🗑️ Xóa
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // TCVN Functions
+    function filterTCVN() {
+      const categoryFilter = document.getElementById('tcvn-filter').value;
+      const searchQuery = document.getElementById('tcvn-search').value.toLowerCase();
+
+      filteredTCVN = tcvnDatabase;
+
+      if (categoryFilter) {
+        filteredTCVN = filteredTCVN.filter(tcvn => tcvn.category === categoryFilter);
+      }
+
+      if (searchQuery) {
+        filteredTCVN = filteredTCVN.filter(tcvn => 
+          tcvn.title.toLowerCase().includes(searchQuery) ||
+          tcvn.description.toLowerCase().includes(searchQuery)
+        );
+      }
+
+      renderTCVN();
+    }
+
+    function getCategoryBadgeColor(category) {
+      const colors = {
+        'ket-cau': { bg: '#d1ecf1', text: '#0c5460' },
+        'vat-lieu': { bg: '#fff3cd', text: '#856404' },
+        'dinh-muc': { bg: '#d4edda', text: '#155724' },
+        'nha-cong-trinh': { bg: '#f8d7da', text: '#721c24' },
+        'an-toan': { bg: '#e2e3e5', text: '#383d41' },
+        'moi-truong': { bg: '#d1e7dd', text: '#0f5132' }
+      };
+      return colors[category] || { bg: '#f8f9fa', text: '#6c757d' };
+    }
+
+    function getCategoryDisplayName(category) {
+      const names = {
+        'ket-cau': 'Kết Cấu Bê Tông',
+        'vat-lieu': 'Vật Liệu Xây Dựng',
+        'dinh-muc': 'Định Mức Xây Dựng',
+        'nha-cong-trinh': 'Nhà & Công Trình',
+        'an-toan': 'An Toàn Lao Động',
+        'moi-truong': 'Môi Trường'
+      };
+      return names[category] || category;
+    }
+
+    function renderTCVN() {
+      const container = document.getElementById('tcvn-list');
+      
+      if (!filteredTCVN || filteredTCVN.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📚</div>
+            <h3>Không tìm thấy tiêu chuẩn phù hợp</h3>
+            <p>Thử thay đổi từ khóa tìm kiếm hoặc lĩnh vực</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filteredTCVN.map(tcvn => {
+        const badgeColor = getCategoryBadgeColor(tcvn.category);
+        const categoryName = getCategoryDisplayName(tcvn.category);
+
+        return `
+          <div class="tcvn-item">
+            <div class="tcvn-category-badge" style="background: ${badgeColor.bg}; color: ${badgeColor.text};">
+              ${categoryName}
+            </div>
+            <h3>${tcvn.title}</h3>
+            <p>${tcvn.description}</p>
+          </div>
+        `;
+      }).join('');
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a8385cea79e5dfa',t:'MTc2NDc2OTcxNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
